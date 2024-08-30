@@ -4,7 +4,7 @@
  */
 package com.mycompany.practica1_lf.FrontEnd;
 
-import BackEnd.Controlador;
+import com.mycompany.practica1_lf.BackEnd.Controlador;
 
 /**
  *
