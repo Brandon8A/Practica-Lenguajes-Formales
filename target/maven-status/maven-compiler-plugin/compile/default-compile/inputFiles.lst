@@ -1,6 +1,7 @@
 /home/brandon/NetBeansProjects/Practica1_LF/src/main/java/com/mycompany/practica1_lf/FrontEnd/SolicitarFilasColumnas.java
 /home/brandon/NetBeansProjects/Practica1_LF/src/main/java/com/mycompany/practica1_lf/FrontEnd/FrameAnalizadorLexico.java
-/home/brandon/NetBeansProjects/Practica1_LF/src/main/java/com/mycompany/practica1_lf/PalabrasReservadas.java
+/home/brandon/NetBeansProjects/Practica1_LF/src/main/java/com/mycompany/practica1_lf/BackEnd/Operadores.java
+/home/brandon/NetBeansProjects/Practica1_LF/src/main/java/com/mycompany/practica1_lf/BackEnd/PalabrasReservadas.java
 /home/brandon/NetBeansProjects/Practica1_LF/src/main/java/com/mycompany/practica1_lf/Exceptions/ExceptionsAnalizadorLexico.java
 /home/brandon/NetBeansProjects/Practica1_LF/src/main/java/com/mycompany/practica1_lf/BackEnd/Controlador.java
 /home/brandon/NetBeansProjects/Practica1_LF/src/main/java/com/mycompany/practica1_lf/FrontEnd/Pixel.java

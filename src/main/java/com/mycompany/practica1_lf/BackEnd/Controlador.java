@@ -7,7 +7,7 @@ package com.mycompany.practica1_lf.BackEnd;
 import com.mycompany.practica1_lf.Exceptions.ExceptionsAnalizadorLexico;
 import com.mycompany.practica1_lf.FrontEnd.FrameAnalizadorLexico;
 import com.mycompany.practica1_lf.FrontEnd.Pixel;
-import com.mycompany.practica1_lf.PalabrasReservadas;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.io.BufferedReader;
 import java.io.File;
@@ -24,6 +24,8 @@ public class Controlador {
 
     private FrameAnalizadorLexico frameAnalizadorLexico;
     private Pixel[][] imagen;
+    private int controladorFilas = 0;
+    private int controladorColumnas = 0;
 
     public Controlador(FrameAnalizadorLexico frameAnalizadorLexico) {
         this.frameAnalizadorLexico = frameAnalizadorLexico;
@@ -39,6 +41,16 @@ public class Controlador {
                 frameAnalizadorLexico.getPanelImagen().add(imagen[i][j]);
             }
         }
+    }
+
+    private void reseteandoImagen() {
+        for (int i = 0; i < frameAnalizadorLexico.getTamañoFilas(); i++) {
+            for (int j = 0; j < frameAnalizadorLexico.getTamañoColumnas(); j++) {
+                imagen[i][j].setBackground(Color.WHITE);
+            }
+        }
+        frameAnalizadorLexico.getPanelImagen().validate();
+        frameAnalizadorLexico.getPanelImagen().repaint();
     }
 
     public void abrirArchivo() {
@@ -79,27 +91,51 @@ public class Controlador {
             throw new ExceptionsAnalizadorLexico("Ingrese codigo para poder analizarlo");
         }
 //        System.out.print(frameAnalizadorLexico.getAreaTextoCodigo().getText());
+        controladorColumnas = 0;
+        controladorFilas = 0;
+        reseteandoImagen();
         obtenerPalabras();
     }
 
+    /**
+     * Metodo que obtiene cada palabra del texto de la JTextArea y las almacena en un arreglo
+     */
     public void obtenerPalabras() {
         String texto = frameAnalizadorLexico.getAreaTextoCodigo().getText();
         String palabras[] = texto.split("\\s+");
-        int i = 1;
+        Operadores identificarOperadores = new Operadores(this);
         for (String palabra : palabras) {
             if (!palabra.isEmpty()) {
-                for (PalabrasReservadas palabraReservada : PalabrasReservadas.values()) {
-                    if (palabraReservada.name().equals(palabra)) {
-                        System.out.println("La palabra " + palabra + " es una palabra reservada.");
-                        
-                    } else {
-                        if (i == PalabrasReservadas.values().length) {
-                            System.out.println("La palabra " + palabra + " NO esta reservada");
-                        }
-                    }
-                    i++;
-                }
+                identificarOperadores.identificadorOperadorAritmetico(palabra);
+                identificarOperadores.identificadorOperadorRelacionalComparacion(palabra);
+                identificarOperadores.identificadorOperadoresAsignacion(palabra);
+                identificarOperadores.identificadorPalabrasReservadas(palabra);
             }
         }
     }
+
+    public void pintarImagen(Color color) {
+        imagen[controladorFilas][controladorColumnas].setBackground(color);
+    }
+
+    public int getControladorFilas() {
+        return controladorFilas;
+    }
+
+    public void setControladorFilas(int controladorFilas) {
+        this.controladorFilas = controladorFilas;
+    }
+
+    public int getControladorColumnas() {
+        return controladorColumnas;
+    }
+
+    public void setControladorColumnas(int controladorColumnas) {
+        this.controladorColumnas = controladorColumnas;
+    }
+
+    public FrameAnalizadorLexico getFrameAnalizadorLexico() {
+        return frameAnalizadorLexico;
+    }
+
 }
