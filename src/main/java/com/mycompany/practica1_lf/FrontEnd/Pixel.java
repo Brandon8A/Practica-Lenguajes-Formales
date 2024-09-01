@@ -4,6 +4,7 @@
  */
 package com.mycompany.practica1_lf.FrontEnd;
 
+import java.awt.Color;
 import javax.swing.JButton;
 
 /**
@@ -11,8 +12,15 @@ import javax.swing.JButton;
  * @author brandon
  */
 public class Pixel extends JButton{
+    
     private int numeroPixel;
 
+    public Pixel() {
+        this.setBackground(Color.WHITE);
+    }
+
+    
+    
     public int getNumeroPixel() {
         return numeroPixel;
     }

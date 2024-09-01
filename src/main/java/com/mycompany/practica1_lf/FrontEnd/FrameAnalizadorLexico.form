@@ -126,7 +126,7 @@
         </Container>
         <Component class="javax.swing.JButton" name="botonAnalizadorLexico">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Analizador Lexico"/>
+            <Property name="text" type="java.lang.String" value="Generar Imagen"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="botonCargarArchivo">

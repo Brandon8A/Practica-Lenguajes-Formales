@@ -90,7 +90,7 @@ public class FrameAnalizadorLexico extends javax.swing.JFrame {
         areaTextoCodigo.setRows(5);
         jScrollPane3.setViewportView(areaTextoCodigo);
 
-        botonAnalizadorLexico.setText("Analizador Lexico");
+        botonAnalizadorLexico.setText("Generar Imagen");
 
         botonCargarArchivo.setText("Cargar Archivo");
         botonCargarArchivo.addActionListener(new java.awt.event.ActionListener() {
