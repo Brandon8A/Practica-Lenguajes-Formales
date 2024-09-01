@@ -6,6 +6,7 @@ package com.mycompany.practica1_lf.FrontEnd;
 
 import com.mycompany.practica1_lf.BackEnd.Controlador;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -22,6 +23,7 @@ public class FrameAnalizadorLexico extends javax.swing.JFrame {
     public FrameAnalizadorLexico() {
         initComponents();
         this.controlador = new Controlador(this);
+        areaTextoNumeroLinea.setEditable(false);
         this.setTitle("Analizador Lexico");
         SolicitarFilasColumnas solicitarFilasColumnas = new SolicitarFilasColumnas(this, true, controlador);
         solicitarFilasColumnas.setLocationRelativeTo(null);
@@ -50,6 +52,14 @@ public class FrameAnalizadorLexico extends javax.swing.JFrame {
 
     public JPanel getPanelImagen(){
         return panelImagen;
+    }
+    
+    public JTextArea getAreaTextoCodigo(){
+        return areaTextoCodigo;
+    }
+    
+    public JTextArea getAreaTextoNumeroLinea(){
+        return areaTextoNumeroLinea;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,6 +93,11 @@ public class FrameAnalizadorLexico extends javax.swing.JFrame {
         botonAnalizadorLexico.setText("Analizador Lexico");
 
         botonCargarArchivo.setText("Cargar Archivo");
+        botonCargarArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCargarArchivoActionPerformed(evt);
+            }
+        });
 
         botonLimpiar.setText("Limpiar");
 
@@ -102,19 +117,23 @@ public class FrameAnalizadorLexico extends javax.swing.JFrame {
         panelAnalizadorLexicoLayout.setHorizontalGroup(
             panelAnalizadorLexicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAnalizadorLexicoLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(botonCargarArchivo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
-                .addComponent(botonAnalizadorLexico)
-                .addGap(356, 356, 356)
-                .addComponent(botonLimpiar)
-                .addGap(56, 56, 56))
-            .addGroup(panelAnalizadorLexicoLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelAnalizadorLexicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelAnalizadorLexicoLayout.createSequentialGroup()
+                        .addComponent(botonCargarArchivo)
+                        .addGap(410, 410, 410)
+                        .addComponent(botonAnalizadorLexico))
+                    .addGroup(panelAnalizadorLexicoLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(panelAnalizadorLexicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelAnalizadorLexicoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelAnalizadorLexicoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
+                        .addComponent(botonLimpiar)
+                        .addGap(56, 56, 56))))
         );
         panelAnalizadorLexicoLayout.setVerticalGroup(
             panelAnalizadorLexicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,6 +170,11 @@ public class FrameAnalizadorLexico extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonCargarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarArchivoActionPerformed
+        // TODO add your handling code here:
+        controlador.abrirArchivo();
+    }//GEN-LAST:event_botonCargarArchivoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
