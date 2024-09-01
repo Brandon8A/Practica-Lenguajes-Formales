@@ -4,8 +4,10 @@
  */
 package com.mycompany.practica1_lf.BackEnd;
 
+import com.mycompany.practica1_lf.Exceptions.ExceptionsAnalizadorLexico;
 import com.mycompany.practica1_lf.FrontEnd.FrameAnalizadorLexico;
 import com.mycompany.practica1_lf.FrontEnd.Pixel;
+import com.mycompany.practica1_lf.PalabrasReservadas;
 import java.awt.GridLayout;
 import java.io.BufferedReader;
 import java.io.File;
@@ -19,34 +21,37 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author brandon
  */
 public class Controlador {
-    
+
     private FrameAnalizadorLexico frameAnalizadorLexico;
+    private Pixel[][] imagen;
 
     public Controlador(FrameAnalizadorLexico frameAnalizadorLexico) {
         this.frameAnalizadorLexico = frameAnalizadorLexico;
     }
-    
-    public void imprimirBotonesImagen(){
+
+    public void imprimirBotonesImagen() {
         frameAnalizadorLexico.getPanelImagen().removeAll();
         frameAnalizadorLexico.getPanelImagen().setLayout(new GridLayout(frameAnalizadorLexico.getTamañoFilas(), frameAnalizadorLexico.getTamañoColumnas()));
+        imagen = new Pixel[frameAnalizadorLexico.getTamañoFilas()][frameAnalizadorLexico.getTamañoColumnas()];
         for (int i = 0; i < frameAnalizadorLexico.getTamañoFilas(); i++) {
             for (int j = 0; j < frameAnalizadorLexico.getTamañoColumnas(); j++) {
-                frameAnalizadorLexico.getPanelImagen().add(new Pixel());
+                imagen[i][j] = new Pixel();
+                frameAnalizadorLexico.getPanelImagen().add(imagen[i][j]);
             }
         }
     }
-    
-    public void abrirArchivo(){
+
+    public void abrirArchivo() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de texto", "txt");
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de texto", ".txt");
         int resultado = fileChooser.showOpenDialog(frameAnalizadorLexico);
         File archivoSeleccionado = fileChooser.getSelectedFile();
         obtenerContenidoArchvivo(archivoSeleccionado.getAbsolutePath());
     }
-    
-    private void obtenerContenidoArchvivo(String rutaArchivo){
+
+    private void obtenerContenidoArchvivo(String rutaArchivo) {
         try {
             FileReader archivoALeer = new FileReader(rutaArchivo);
             BufferedReader bufferedReader = new BufferedReader(archivoALeer);
@@ -55,7 +60,7 @@ public class Controlador {
             String linea;
             int numeroLineaI = 0;
             while ((linea = bufferedReader.readLine()) != null) {
-                numeroLineaI++; 
+                numeroLineaI++;
                 numeroLineaS.append(numeroLineaI).append("\n");
                 contenido.append(linea).append("\n");
             }
@@ -67,5 +72,34 @@ public class Controlador {
         }
         frameAnalizadorLexico.getAreaTextoCodigo().validate();
         frameAnalizadorLexico.getAreaTextoCodigo().repaint();
+    }
+
+    public void generarImagen() throws ExceptionsAnalizadorLexico {
+        if (frameAnalizadorLexico.getAreaTextoCodigo() == null || frameAnalizadorLexico.getAreaTextoCodigo().getText().isBlank()) {
+            throw new ExceptionsAnalizadorLexico("Ingrese codigo para poder analizarlo");
+        }
+//        System.out.print(frameAnalizadorLexico.getAreaTextoCodigo().getText());
+        obtenerPalabras();
+    }
+
+    public void obtenerPalabras() {
+        String texto = frameAnalizadorLexico.getAreaTextoCodigo().getText();
+        String palabras[] = texto.split("\\s+");
+        int i = 1;
+        for (String palabra : palabras) {
+            if (!palabra.isEmpty()) {
+                for (PalabrasReservadas palabraReservada : PalabrasReservadas.values()) {
+                    if (palabraReservada.name().equals(palabra)) {
+                        System.out.println("La palabra " + palabra + " es una palabra reservada.");
+                        
+                    } else {
+                        if (i == PalabrasReservadas.values().length) {
+                            System.out.println("La palabra " + palabra + " NO esta reservada");
+                        }
+                    }
+                    i++;
+                }
+            }
+        }
     }
 }

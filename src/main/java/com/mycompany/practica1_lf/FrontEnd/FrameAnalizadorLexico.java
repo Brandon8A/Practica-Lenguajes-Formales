@@ -5,6 +5,9 @@
 package com.mycompany.practica1_lf.FrontEnd;
 
 import com.mycompany.practica1_lf.BackEnd.Controlador;
+import com.mycompany.practica1_lf.Exceptions.ExceptionsAnalizadorLexico;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -14,9 +17,11 @@ import javax.swing.JTextArea;
  */
 public class FrameAnalizadorLexico extends javax.swing.JFrame {
 
-   private Controlador controlador;
-   private int tamañoFilas;
-   private int tamañoColumnas;
+    private Controlador controlador;
+    private int tamañoFilas;
+    private int tamañoColumnas;
+    private int cantidadLineas = 1;
+
     /**
      * Creates new form FrameAnalizadorLexico
      */
@@ -50,17 +55,18 @@ public class FrameAnalizadorLexico extends javax.swing.JFrame {
         this.tamañoColumnas = tamañoColumnas;
     }
 
-    public JPanel getPanelImagen(){
+    public JPanel getPanelImagen() {
         return panelImagen;
     }
-    
-    public JTextArea getAreaTextoCodigo(){
+
+    public JTextArea getAreaTextoCodigo() {
         return areaTextoCodigo;
     }
-    
-    public JTextArea getAreaTextoNumeroLinea(){
+
+    public JTextArea getAreaTextoNumeroLinea() {
         return areaTextoNumeroLinea;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,7 +81,7 @@ public class FrameAnalizadorLexico extends javax.swing.JFrame {
         areaTextoNumeroLinea = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         areaTextoCodigo = new javax.swing.JTextArea();
-        botonAnalizadorLexico = new javax.swing.JButton();
+        botonGenerarImagen = new javax.swing.JButton();
         botonCargarArchivo = new javax.swing.JButton();
         botonLimpiar = new javax.swing.JButton();
         panelImagen = new javax.swing.JPanel();
@@ -88,9 +94,19 @@ public class FrameAnalizadorLexico extends javax.swing.JFrame {
 
         areaTextoCodigo.setColumns(20);
         areaTextoCodigo.setRows(5);
+        areaTextoCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                areaTextoCodigoKeyPressed(evt);
+            }
+        });
         jScrollPane3.setViewportView(areaTextoCodigo);
 
-        botonAnalizadorLexico.setText("Generar Imagen");
+        botonGenerarImagen.setText("Generar Imagen");
+        botonGenerarImagen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGenerarImagenActionPerformed(evt);
+            }
+        });
 
         botonCargarArchivo.setText("Cargar Archivo");
         botonCargarArchivo.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +137,7 @@ public class FrameAnalizadorLexico extends javax.swing.JFrame {
                     .addGroup(panelAnalizadorLexicoLayout.createSequentialGroup()
                         .addComponent(botonCargarArchivo)
                         .addGap(410, 410, 410)
-                        .addComponent(botonAnalizadorLexico))
+                        .addComponent(botonGenerarImagen))
                     .addGroup(panelAnalizadorLexicoLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -145,7 +161,7 @@ public class FrameAnalizadorLexico extends javax.swing.JFrame {
                     .addComponent(jScrollPane1))
                 .addGap(12, 12, 12)
                 .addGroup(panelAnalizadorLexicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonAnalizadorLexico)
+                    .addComponent(botonGenerarImagen)
                     .addComponent(botonLimpiar)
                     .addComponent(botonCargarArchivo))
                 .addContainerGap())
@@ -176,12 +192,37 @@ public class FrameAnalizadorLexico extends javax.swing.JFrame {
         controlador.abrirArchivo();
     }//GEN-LAST:event_botonCargarArchivoActionPerformed
 
+    private void botonGenerarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGenerarImagenActionPerformed
+        try {
+            // TODO add your handling code here:
+            controlador.generarImagen();
+        } catch (ExceptionsAnalizadorLexico ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_botonGenerarImagenActionPerformed
+
+    private void areaTextoCodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_areaTextoCodigoKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+//            System.out.println("ENTER");
+            cantidadLineas++;
+            areaTextoNumeroLinea.setText(crearNumeroDeLineas().toString());
+        }
+    }//GEN-LAST:event_areaTextoCodigoKeyPressed
+
+    private StringBuilder crearNumeroDeLineas() {
+        StringBuilder numeroDeLineas = new StringBuilder();
+        for (int i = 0; i < cantidadLineas; i++) {
+            numeroDeLineas.append(i+1).append("\n");
+        }
+        return numeroDeLineas;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaTextoCodigo;
     private javax.swing.JTextArea areaTextoNumeroLinea;
-    private javax.swing.JButton botonAnalizadorLexico;
     private javax.swing.JButton botonCargarArchivo;
+    private javax.swing.JButton botonGenerarImagen;
     private javax.swing.JButton botonLimpiar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
