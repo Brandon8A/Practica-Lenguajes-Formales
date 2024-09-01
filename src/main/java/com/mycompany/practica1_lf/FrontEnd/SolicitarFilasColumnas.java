@@ -97,7 +97,7 @@ public class SolicitarFilasColumnas extends javax.swing.JDialog {
         // TODO add your handling code here:
         try {
             validarDimensiones();
-            
+            controlador.imprimirBotonesImagen();
             this.setVisible(false);
         } catch (ExceptionsAnalizadorLexico e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

@@ -5,6 +5,8 @@
 package com.mycompany.practica1_lf.BackEnd;
 
 import com.mycompany.practica1_lf.FrontEnd.FrameAnalizadorLexico;
+import java.awt.GridLayout;
+import javax.swing.JButton;
 
 /**
  *
@@ -18,7 +20,13 @@ public class Controlador {
         this.frameAnalizadorLexico = frameAnalizadorLexico;
     }
     
-    public void asignarBotones(){
-        
+    public void imprimirBotonesImagen(){
+        frameAnalizadorLexico.getPanelImagen().removeAll();
+        frameAnalizadorLexico.getPanelImagen().setLayout(new GridLayout(frameAnalizadorLexico.getTamañoFilas(), frameAnalizadorLexico.getTamañoColumnas()));
+        for (int i = 0; i < frameAnalizadorLexico.getTamañoFilas(); i++) {
+            for (int j = 0; j < frameAnalizadorLexico.getTamañoColumnas(); j++) {
+                frameAnalizadorLexico.getPanelImagen().add(new JButton());
+            }
+        }
     }
 }
