@@ -4,10 +4,21 @@
  */
 package com.mycompany.practica1_lf.BackEnd;
 
+import com.mycompany.practica1_lf.FrontEnd.FrameAnalizadorLexico;
+
 /**
  *
  * @author brandon
  */
 public class Controlador {
     
+    private FrameAnalizadorLexico frameAnalizadorLexico;
+
+    public Controlador(FrameAnalizadorLexico frameAnalizadorLexico) {
+        this.frameAnalizadorLexico = frameAnalizadorLexico;
+    }
+    
+    public void asignarBotones(){
+        
+    }
 }

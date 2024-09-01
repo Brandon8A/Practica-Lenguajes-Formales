@@ -5,6 +5,7 @@
 package com.mycompany.practica1_lf.FrontEnd;
 
 import com.mycompany.practica1_lf.BackEnd.Controlador;
+import javax.swing.JPanel;
 
 /**
  *
@@ -13,19 +14,43 @@ import com.mycompany.practica1_lf.BackEnd.Controlador;
 public class FrameAnalizadorLexico extends javax.swing.JFrame {
 
    private Controlador controlador;
+   private int tamañoFilas;
+   private int tamañoColumnas;
     /**
      * Creates new form FrameAnalizadorLexico
      */
     public FrameAnalizadorLexico() {
         initComponents();
-        this.controlador = new Controlador();
+        this.controlador = new Controlador(this);
         this.setTitle("Analizador Lexico");
+        SolicitarFilasColumnas solicitarFilasColumnas = new SolicitarFilasColumnas(this, true, controlador);
+        solicitarFilasColumnas.setLocationRelativeTo(null);
+        solicitarFilasColumnas.setVisible(true);
     }
 
     public Controlador getControlador() {
         return controlador;
     }
 
+    public int getTamañoFilas() {
+        return tamañoFilas;
+    }
+
+    public void setTamañoFilas(int tamañoFilas) {
+        this.tamañoFilas = tamañoFilas;
+    }
+
+    public int getTamañoColumnas() {
+        return tamañoColumnas;
+    }
+
+    public void setTamañoColumnas(int tamañoColumnas) {
+        this.tamañoColumnas = tamañoColumnas;
+    }
+
+    public JPanel getPanelImagen(){
+        return panelImagen;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
