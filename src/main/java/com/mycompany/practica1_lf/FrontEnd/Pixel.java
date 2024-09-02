@@ -15,7 +15,7 @@ import javax.swing.JButton;
 public class Pixel extends JButton{
     
     private int numeroPixel;
-    private Token token;
+    private Token token = null;
 
     public Pixel() {
         this.setBackground(Color.WHITE);

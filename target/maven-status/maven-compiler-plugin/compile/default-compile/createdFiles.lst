@@ -4,9 +4,11 @@ com/mycompany/practica1_lf/FrontEnd/FrameAnalizadorLexico.class
 com/mycompany/practica1_lf/BackEnd/Token.class
 com/mycompany/practica1_lf/Exceptions/ExceptionsAnalizadorLexico.class
 com/mycompany/practica1_lf/FrontEnd/FrameAnalizadorLexico$3.class
+com/mycompany/practica1_lf/FrontEnd/FrameAnalizadorLexico$4.class
 com/mycompany/practica1_lf/Practica1_LF.class
 com/mycompany/practica1_lf/BackEnd/Operadores.class
 com/mycompany/practica1_lf/BackEnd/PalabrasReservadas.class
+com/mycompany/practica1_lf/FrontEnd/FrameReportes.class
 com/mycompany/practica1_lf/BackEnd/Controlador.class
 com/mycompany/practica1_lf/FrontEnd/SolicitarFilasColumnas$1.class
 com/mycompany/practica1_lf/FrontEnd/FrameAnalizadorLexico$1.class

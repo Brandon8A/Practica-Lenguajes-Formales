@@ -86,6 +86,9 @@ public class FrameAnalizadorLexico extends javax.swing.JFrame {
         botonCargarArchivo = new javax.swing.JButton();
         botonLimpiar = new javax.swing.JButton();
         panelImagen = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        subMenuReportes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -158,7 +161,7 @@ public class FrameAnalizadorLexico extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelAnalizadorLexicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
                 .addGap(12, 12, 12)
                 .addGroup(panelAnalizadorLexicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -167,6 +170,20 @@ public class FrameAnalizadorLexico extends javax.swing.JFrame {
                     .addComponent(botonCargarArchivo))
                 .addContainerGap())
         );
+
+        jMenu1.setText("Reportes");
+
+        subMenuReportes.setText("Ver Reporte");
+        subMenuReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuReportesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(subMenuReportes);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -211,6 +228,14 @@ public class FrameAnalizadorLexico extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_areaTextoCodigoKeyPressed
 
+    private void subMenuReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuReportesActionPerformed
+        // TODO add your handling code here:
+        FrameReportes frameReportes = new FrameReportes(controlador.getImagen());
+        frameReportes.setLocationRelativeTo(null);
+        frameReportes.setVisible(true);
+        frameReportes.mostrarDatosEnTabla();
+    }//GEN-LAST:event_subMenuReportesActionPerformed
+
     private StringBuilder crearNumeroDeLineas() {
         StringBuilder numeroDeLineas = new StringBuilder();
         for (int i = 0; i < cantidadLineas; i++) {
@@ -234,9 +259,12 @@ public class FrameAnalizadorLexico extends javax.swing.JFrame {
     private javax.swing.JButton botonCargarArchivo;
     private javax.swing.JButton botonGenerarImagen;
     private javax.swing.JButton botonLimpiar;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel panelAnalizadorLexico;
     private javax.swing.JPanel panelImagen;
+    private javax.swing.JMenuItem subMenuReportes;
     // End of variables declaration//GEN-END:variables
 }

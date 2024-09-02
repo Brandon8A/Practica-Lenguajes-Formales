@@ -14,12 +14,14 @@ public class Token {
     private int columna;
     private String lexema;
     private String tipo;
+    private String color;
 
-    public Token(int fila, int columna, String lexema, String tipo) {
+    public Token(int fila, int columna, String lexema, String tipo, String color) {
         this.fila = fila;
         this.columna = columna;
         this.lexema = lexema;
         this.tipo = tipo;
+        this.color = color;
     }
 
     public int getFila() {
@@ -36,6 +38,14 @@ public class Token {
 
     public String getTipo() {
         return tipo;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
     
     
