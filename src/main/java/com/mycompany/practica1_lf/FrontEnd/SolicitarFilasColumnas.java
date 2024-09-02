@@ -119,6 +119,7 @@ public class SolicitarFilasColumnas extends javax.swing.JDialog {
         }
         frameAnalizadorLexico.setTamañoColumnas(Integer.valueOf(cajaTextoColumnas.getText()));
         frameAnalizadorLexico.setTamañoFilas(Integer.valueOf(cajaTextoFilas.getText()));
+        frameAnalizadorLexico.setCantidadTokens(Integer.valueOf(cajaTextoColumnas.getText())*Integer.valueOf(cajaTextoFilas.getText()));
     }
     
     private boolean validarDatos(String dato){

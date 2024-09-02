@@ -26,6 +26,7 @@ public class Controlador {
     private Pixel[][] imagen;
     private int controladorFilas = 0;
     private int controladorColumnas = 0;
+    private boolean palabraIdentificada = false;
 
     public Controlador(FrameAnalizadorLexico frameAnalizadorLexico) {
         this.frameAnalizadorLexico = frameAnalizadorLexico;
@@ -106,16 +107,29 @@ public class Controlador {
         Operadores identificarOperadores = new Operadores(this);
         for (String palabra : palabras) {
             if (!palabra.isEmpty()) {
-                identificarOperadores.identificadorOperadorAritmetico(palabra);
-                identificarOperadores.identificadorOperadorRelacionalComparacion(palabra);
-                identificarOperadores.identificadorOperadoresAsignacion(palabra);
-                identificarOperadores.identificadorPalabrasReservadas(palabra);
+                if (!palabraIdentificada) {
+                    identificarOperadores.identificadorOperadorRelacionalComparacion(palabra);
+                }
+                if (!palabraIdentificada) {
+                    identificarOperadores.identificadorOperadoresAsignacion(palabra);
+                }
+                if (!palabraIdentificada) {
+                    identificarOperadores.identificadorOperadorAritmetico(palabra);
+                }
+                if (!palabraIdentificada) {
+                    identificarOperadores.identificadorPalabrasReservadas(palabra);
+                }
+                if (!palabraIdentificada) {
+                    identificarOperadores.identificadorTiposDatos(palabra);
+                }
             }
+            palabraIdentificada = false;
         }
     }
 
-    public void pintarImagen(Color color) {
+    public void pintarImagen(Color color, Token token) {
         imagen[controladorFilas][controladorColumnas].setBackground(color);
+        imagen[controladorFilas][controladorColumnas].setToken(token);
     }
 
     public int getControladorFilas() {
@@ -137,5 +151,23 @@ public class Controlador {
     public FrameAnalizadorLexico getFrameAnalizadorLexico() {
         return frameAnalizadorLexico;
     }
+
+    public Pixel[][] getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Pixel[][] imagen) {
+        this.imagen = imagen;
+    }
+
+    public boolean isPalabraIdentificada() {
+        return palabraIdentificada;
+    }
+
+    public void setPalabraIdentificada(boolean palabraIdentificada) {
+        this.palabraIdentificada = palabraIdentificada;
+    }
+    
+    
 
 }

@@ -28,6 +28,11 @@ public class Operadores {
     private final String COLOR_HEXADECIMAL_MENOR_O_IGUAL_QUE = "#F0A30A";
     private final String COLOR_HEXADECIMAL_IGUAL_SIMPLE = "#41D9D4";
     private final String COLOR_HEXADECIMAL_ASIGNACION_COMPUESTA = "#FFFFFF";
+    private final String COLOR_HEXADECIMAL_ENTERO = "#1BA1E2";
+    private final String COLOR_HEXADECIMAL_DECIMAL = "#FFFF88";
+    private final String COLOR_HEXADECIMAL_CADENA = "#E51400";
+    private final String COLOR_HEXADECIMAL_BOOLEANO = "#FA6800";
+    private final String COLOR_HEXADECIMAL_CARACTER = "#0050EF";
 
     private Controlador controlador;
 
@@ -54,17 +59,35 @@ public class Operadores {
     private void establecerColorIdentificadorAritmetico(String operadorAritmetico) {
         Color color = null;
         if (operadorAritmetico.equals("+")) {
-            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_SUMA));
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(),
+                    operadorAritmetico, "Operador Aritmetico");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_SUMA), token);
+            controlador.setPalabraIdentificada(true);
         } else if (operadorAritmetico.equals("-")) {
-            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_RESTA));
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(),
+                    operadorAritmetico, "Operador Aritmetico");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_SUMA), token);
+            controlador.setPalabraIdentificada(true);
         } else if (operadorAritmetico.equals("^")) {
-            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_EXPONENTE));
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(),
+                    operadorAritmetico, "Operador Aritmetico");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_SUMA), token);
+            controlador.setPalabraIdentificada(true);
         } else if (operadorAritmetico.equals("/")) {
-            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_DIVISION));
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(),
+                    operadorAritmetico, "Operador Aritmetico");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_SUMA), token);
+            controlador.setPalabraIdentificada(true);
         } else if (operadorAritmetico.equals("Mod")) {
-            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_MODULO));
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(),
+                    operadorAritmetico, "Operador Aritmetico");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_SUMA), token);
+            controlador.setPalabraIdentificada(true);
         } else if (operadorAritmetico.equals("*")) {
-            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_MULTIPLICACION));
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(),
+                    operadorAritmetico, "Operador Aritmetico");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_SUMA), token);
+            controlador.setPalabraIdentificada(true);
         }
     }
 
@@ -86,17 +109,35 @@ public class Operadores {
     private void establecerColorIdentificadorRelacionalComparacion(String operadorRelacionalComparacion) {
         Color color = null;
         if (operadorRelacionalComparacion.equals("==")) {
-            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_IGUAL_DOBLE));
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(),
+                    operadorRelacionalComparacion, "Operador Relacional");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_IGUAL_DOBLE), token);
+            controlador.setPalabraIdentificada(true);
         } else if (operadorRelacionalComparacion.equals("<>")) {
-            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_DIFERENTE));
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(),
+                    operadorRelacionalComparacion, "Operador Relacional");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_IGUAL_DOBLE), token);
+            controlador.setPalabraIdentificada(true);
         } else if (operadorRelacionalComparacion.equals(">")) {
-            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_MAYOR_QUE));
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(),
+                    operadorRelacionalComparacion, "Operador Relacional");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_IGUAL_DOBLE), token);
+            controlador.setPalabraIdentificada(true);
         } else if (operadorRelacionalComparacion.equals("<")) {
-            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_MENOR_QUE));
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(),
+                    operadorRelacionalComparacion, "Operador Relacional");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_IGUAL_DOBLE), token);
+            controlador.setPalabraIdentificada(true);
         } else if (operadorRelacionalComparacion.equals(">=")) {
-            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_MAYOR_O_IGUAL_QUE));
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(),
+                    operadorRelacionalComparacion, "Operador Relacional");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_IGUAL_DOBLE), token);
+            controlador.setPalabraIdentificada(true);
         } else if (operadorRelacionalComparacion.equals("<=")) {
-            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_MENOR_O_IGUAL_QUE));
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(),
+                    operadorRelacionalComparacion, "Operador Relacional");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_IGUAL_DOBLE), token);
+            controlador.setPalabraIdentificada(true);
         }
     }
 
@@ -116,18 +157,33 @@ public class Operadores {
         }
     }
 
-    private void establecerColorIdentificadorAsignacion(String operadorRelacionalComparacion) {
+    private void establecerColorIdentificadorAsignacion(String operadorAsignacion) {
         Color color = null;
-        if (operadorRelacionalComparacion.equals("=")) {
-            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_IGUAL_SIMPLE));
-        } else if (operadorRelacionalComparacion.equals("+=")) {
-            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_ASIGNACION_COMPUESTA));
-        } else if (operadorRelacionalComparacion.equals("-=")) {
-            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_ASIGNACION_COMPUESTA));
-        } else if (operadorRelacionalComparacion.equals("*=")) {
-            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_ASIGNACION_COMPUESTA));
-        } else if (operadorRelacionalComparacion.equals("/=")) {
-            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_ASIGNACION_COMPUESTA));
+        if (operadorAsignacion.equals("=")) {
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(),
+                    operadorAsignacion, "Operador Asignacion");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_IGUAL_SIMPLE), token);
+            controlador.setPalabraIdentificada(true);
+        } else if (operadorAsignacion.equals("+=")) {
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(),
+                    operadorAsignacion, "Operador Asignacion");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_IGUAL_SIMPLE), token);
+            controlador.setPalabraIdentificada(true);
+        } else if (operadorAsignacion.equals("-=")) {
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(),
+                    operadorAsignacion, "Operador Asignacion");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_IGUAL_SIMPLE), token);
+            controlador.setPalabraIdentificada(true);
+        } else if (operadorAsignacion.equals("*=")) {
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(),
+                    operadorAsignacion, "Operador Asignacion");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_IGUAL_SIMPLE), token);
+            controlador.setPalabraIdentificada(true);
+        } else if (operadorAsignacion.equals("/=")) {
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(),
+                    operadorAsignacion, "Operador Asignacion");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_IGUAL_SIMPLE), token);
+            controlador.setPalabraIdentificada(true);
         }
     }
 
@@ -138,8 +194,10 @@ public class Operadores {
                 System.out.println("La palabra " + palabra + " es una palabra reservada.");
                 String colorHexadecimal = "#60A917";
                 Color color = null;
-                controlador.pintarImagen(color = color.decode(colorHexadecimal));
+                Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(), palabra, "Palabra Reservada");
+                controlador.pintarImagen(color = color.decode(colorHexadecimal),token);
                 controlador.setControladorColumnas(controlador.getControladorColumnas() + 1);
+                controlador.setPalabraIdentificada(true);
                 if (controlador.getControladorColumnas() == controlador.getFrameAnalizadorLexico().getTamañoColumnas()) {
                     controlador.setControladorColumnas(0);
                     controlador.setControladorFilas(controlador.getControladorFilas() + 1);
@@ -153,6 +211,82 @@ public class Operadores {
             i++;
         }
 
+    }
+
+    public void identificadorTiposDatos(String palabra) {
+        // Verificar si es un número entero
+        try {
+            Integer.parseInt(palabra.trim());
+            establecerColorTiposDatos("int");
+            return;
+        } catch (NumberFormatException e) {
+            // No es un número entero
+            System.out.println("No es entero");
+        }
+
+        // Verificar si es un número decimal
+        try {
+            Double.parseDouble(palabra.trim());
+            establecerColorTiposDatos("Double");
+            return;
+        } catch (NumberFormatException e) {
+            // No es un número decimal
+            System.out.println("No es decimal");
+        }
+        if (palabra.length() == 1) {
+            establecerColorTiposDatos("char");
+            return;
+        }
+        if (palabra.equals("True") || palabra.equals("False")) {
+            establecerColorTiposDatos("boolean");
+            return;
+        }
+        establecerColorTiposDatos("String");
+    }
+
+    public void establecerColorTiposDatos(String tipoDato) {
+        Color color = null;
+        if (tipoDato.equals("int")) {
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(), tipoDato, "Tipo de Dato");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_ENTERO), token);
+            controlador.setControladorColumnas(controlador.getControladorColumnas() + 1);
+            if (controlador.getControladorColumnas() == controlador.getFrameAnalizadorLexico().getTamañoColumnas()) {
+                controlador.setControladorColumnas(0);
+                controlador.setControladorFilas(controlador.getControladorFilas() + 1);
+            }
+        } else if (tipoDato.equals("Double")) {
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(), tipoDato, "Tipo de Dato");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_DECIMAL), token);
+            controlador.setControladorColumnas(controlador.getControladorColumnas() + 1);
+            if (controlador.getControladorColumnas() == controlador.getFrameAnalizadorLexico().getTamañoColumnas()) {
+                controlador.setControladorColumnas(0);
+                controlador.setControladorFilas(controlador.getControladorFilas() + 1);
+            }
+        } else if (tipoDato.equals("char")) {
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(), tipoDato, "Tipo de Dato");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_DECIMAL), token);
+            controlador.setControladorColumnas(controlador.getControladorColumnas() + 1);
+            if (controlador.getControladorColumnas() == controlador.getFrameAnalizadorLexico().getTamañoColumnas()) {
+                controlador.setControladorColumnas(0);
+                controlador.setControladorFilas(controlador.getControladorFilas() + 1);
+            }
+        } else if (tipoDato.equals("boolean")) {
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(), tipoDato, "Tipo de Dato");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_DECIMAL), token);
+            controlador.setControladorColumnas(controlador.getControladorColumnas() + 1);
+            if (controlador.getControladorColumnas() == controlador.getFrameAnalizadorLexico().getTamañoColumnas()) {
+                controlador.setControladorColumnas(0);
+                controlador.setControladorFilas(controlador.getControladorFilas() + 1);
+            }
+        } else {
+            Token token = new Token(controlador.getControladorFilas(), controlador.getControladorColumnas(), tipoDato, "Tipo de Dato");
+            controlador.pintarImagen(color = color.decode(COLOR_HEXADECIMAL_DECIMAL), token);
+            controlador.setControladorColumnas(controlador.getControladorColumnas() + 1);
+            if (controlador.getControladorColumnas() == controlador.getFrameAnalizadorLexico().getTamañoColumnas()) {
+                controlador.setControladorColumnas(0);
+                controlador.setControladorFilas(controlador.getControladorFilas() + 1);
+            }
+        }
     }
 
 }

@@ -21,6 +21,7 @@ public class FrameAnalizadorLexico extends javax.swing.JFrame {
     private int tamañoFilas;
     private int tamañoColumnas;
     private int cantidadLineas = 1;
+    private int cantidadTokens;
 
     /**
      * Creates new form FrameAnalizadorLexico
@@ -218,6 +219,15 @@ public class FrameAnalizadorLexico extends javax.swing.JFrame {
         return numeroDeLineas;
     }
 
+    public int getCantidadTokens() {
+        return cantidadTokens;
+    }
+
+    public void setCantidadTokens(int cantidadTokens) {
+        this.cantidadTokens = cantidadTokens;
+    }
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaTextoCodigo;
     private javax.swing.JTextArea areaTextoNumeroLinea;
