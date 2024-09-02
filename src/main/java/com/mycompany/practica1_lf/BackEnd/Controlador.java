@@ -28,14 +28,21 @@ public class Controlador {
     private int controladorColumnas = 0;
     private boolean palabraIdentificada = false;
 
+    /**
+     * Metodo constructor
+     * @param frameAnalizadorLexico tener control sobre la parte grafica de la aplicacion
+     */
     public Controlador(FrameAnalizadorLexico frameAnalizadorLexico) {
         this.frameAnalizadorLexico = frameAnalizadorLexico;
     }
 
+    /**
+     * Este metodo permite imprimir botones en el campo 3 de nuestra ventana
+     */
     public void imprimirBotonesImagen() {
         frameAnalizadorLexico.getPanelImagen().removeAll();
         frameAnalizadorLexico.getPanelImagen().setLayout(new GridLayout(frameAnalizadorLexico.getTamañoFilas(), frameAnalizadorLexico.getTamañoColumnas()));
-        imagen = new Pixel[frameAnalizadorLexico.getTamañoFilas()][frameAnalizadorLexico.getTamañoColumnas()];
+        imagen = new Pixel[frameAnalizadorLexico.getTamañoFilas()][frameAnalizadorLexico.getTamañoColumnas()];//estabelciendo dimensiones a la imagen
         for (int i = 0; i < frameAnalizadorLexico.getTamañoFilas(); i++) {
             for (int j = 0; j < frameAnalizadorLexico.getTamañoColumnas(); j++) {
                 imagen[i][j] = new Pixel();
@@ -44,6 +51,9 @@ public class Controlador {
         }
     }
 
+    /**
+     * Metodo que permite establecer el color blanco a cada uno de los pixeles
+     */
     private void reseteandoImagen() {
         for (int i = 0; i < frameAnalizadorLexico.getTamañoFilas(); i++) {
             for (int j = 0; j < frameAnalizadorLexico.getTamañoColumnas(); j++) {
@@ -54,16 +64,23 @@ public class Controlador {
         frameAnalizadorLexico.getPanelImagen().repaint();
     }
 
+    /**
+     * Metodo que permite abrir un archivo de texto
+     */
     public void abrirArchivo() {
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        JFileChooser fileChooser = new JFileChooser();//herramienta grafica 
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);//seleccionando unicamente archivos
 
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de texto", ".txt");
         int resultado = fileChooser.showOpenDialog(frameAnalizadorLexico);
-        File archivoSeleccionado = fileChooser.getSelectedFile();
-        obtenerContenidoArchvivo(archivoSeleccionado.getAbsolutePath());
+        File archivoSeleccionado = fileChooser.getSelectedFile();//alamcenando archivo en la variable 
+        obtenerContenidoArchvivo(archivoSeleccionado.getAbsolutePath());//obteniendo el path del archivo
     }
 
+    /**
+     * Este metodo permitira obtener el contenido que este escrito en el archivo
+     * @param rutaArchivo recibe el path del archivo a extraer la informacion
+     */
     private void obtenerContenidoArchvivo(String rutaArchivo) {
         try {
             FileReader archivoALeer = new FileReader(rutaArchivo);
@@ -87,6 +104,10 @@ public class Controlador {
         frameAnalizadorLexico.getAreaTextoCodigo().repaint();
     }
 
+    /**
+     * Metodo que permite pintar cada pixel
+     * @throws ExceptionsAnalizadorLexico 
+     */
     public void generarImagen() throws ExceptionsAnalizadorLexico {
         if (frameAnalizadorLexico.getAreaTextoCodigo() == null || frameAnalizadorLexico.getAreaTextoCodigo().getText().isBlank()) {
             throw new ExceptionsAnalizadorLexico("Ingrese codigo para poder analizarlo");
@@ -102,7 +123,7 @@ public class Controlador {
      * Metodo que obtiene cada palabra del texto de la JTextArea y las almacena en un arreglo
      */
     public void obtenerPalabras() {
-        String texto = frameAnalizadorLexico.getAreaTextoCodigo().getText();
+        String texto = frameAnalizadorLexico.getAreaTextoCodigo().getText();//obteniendo el texto del area de texto
         String palabras[] = texto.split("\\s+");
         Operadores identificarOperadores = new Operadores(this);
         for (String palabra : palabras) {
@@ -127,11 +148,17 @@ public class Controlador {
         }
     }
 
+    /**
+     * Metodo que permite establecer color a cada pixel y establecer un token a cada pixel
+     * @param color el color del cual se va a pintar la imagen
+     * @param token el tipo de dato que va a tener cada pixel
+     */
     public void pintarImagen(Color color, Token token) {
         imagen[controladorFilas][controladorColumnas].setBackground(color);
         imagen[controladorFilas][controladorColumnas].setToken(token);
     }
 
+    //METODOS GETTERS Y SETTERS
     public int getControladorFilas() {
         return controladorFilas;
     }

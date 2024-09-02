@@ -35,8 +35,6 @@ public class FrameReportes extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaReportesTokens = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         tablaReportesTokens.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
