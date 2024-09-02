@@ -42,7 +42,7 @@ public class FrameReportes extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Token", "Lexema", "Linea", "Columna", "Color"
+                "Token", "Lexema", "Fila", "Columna", "Color"
             }
         ));
         jScrollPane1.setViewportView(tablaReportesTokens);

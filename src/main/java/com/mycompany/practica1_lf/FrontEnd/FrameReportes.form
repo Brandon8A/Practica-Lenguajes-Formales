@@ -54,7 +54,7 @@
               <Table columnCount="5" rowCount="0">
                 <Column editable="true" title="Token" type="java.lang.Object"/>
                 <Column editable="true" title="Lexema" type="java.lang.Object"/>
-                <Column editable="true" title="Linea" type="java.lang.Object"/>
+                <Column editable="true" title="Fila" type="java.lang.Object"/>
                 <Column editable="true" title="Columna" type="java.lang.Object"/>
                 <Column editable="true" title="Color" type="java.lang.Object"/>
               </Table>
